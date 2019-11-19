@@ -1,0 +1,27 @@
+<p>Jquery en angular</p>
+<button id="botonjq" class="btn btn-success"  >Mostrar Texto</button>
+<p id="textojq" class="alert alert-warning" >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae delectus doloremque perspiciatis voluptatem aspernatur iste ab sapiente quia qui voluptatibus perferendis commodi quae quibusdam, tenetur cupiditate quo sequi magni vitae.</p>
+<hr>
+<!--Componente padre-->
+<h1> {{titulo}} </h1>
+ <ul
+ ><li>Camisa rosa </li
+    ><li>Gorra Negra</li>
+</ul>
+<hr>
+<p>Nombre del parque:</p> 
+<input type="text" [(ngModel)]="nombreDelParque" (keyup)="mostrarNombre()" >
+<!--Componente desdel el hijo al padre-->
+<hr>
+<h3>Componente desdel el hijo al padre</h3>
+<ol *ngIf="miParque" >
+    <li>{{miParque.nombre}}</li>
+    <li>{{miParque.metros}}</li>
+    <li>{{miParque.vegetacion}}</li>
+    <li>{{miParque.abierto}}</li>
+</ol>
+<!--Componente hijo-->
+<parques [nombre]="nombreDelParque" (pasameLosDatos)="verDatosParque($event)" ></parques> <!--$event posee todos los datos que se le transfieron desde le hjo-->
+
+<hr>
+

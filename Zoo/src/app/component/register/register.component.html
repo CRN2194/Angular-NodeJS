@@ -1,0 +1,40 @@
+
+ <div class="alert alert-success" *ngIf="status == 'success'">
+    Registro completado correctamente
+</div>
+<div class="alert alert-danger" *ngIf="status == 'error'">
+    Registro fallido
+</div>
+
+<div class="col-lg-6">
+    <h3>{{title}}</h3>
+   
+
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="col-lo-10">
+        <p>
+            <label >Nombre</label>
+            <input type="text" class="form-control" #name="ngModel" required [(ngModel)]="user.name" name="name">
+            <span *ngIf="!name.valid && name.touched"  >El nombre es obligatorio</span>
+        </p>
+        <p>
+            <label >Apellido</label>
+            <input type="text" class="form-control" #surname="ngModel" required [(ngModel)]="user.surname" name="surname">
+            <span *ngIf="!surname.valid && surname.touched"  >El Apellido es obligatorio</span>
+        </p>
+
+        <p>
+            <label >Correo electrónico</label>
+            <input type="email" class="form-control" #email="ngModel" required [(ngModel)]="user.email" name="email">
+            <span *ngIf="!email.valid && email.touched"  >El Email es obligatorio</span>
+        </p>
+
+        <p>
+            <label >Contraseña</label>
+            <input type="password" class="form-control" #password="ngModel" required [(ngModel)]="user.password" name="password">
+            <span *ngIf="!password.valid && password.touched"  >El Password es obligatorio</span>
+        </p>
+
+        <input type="submit" value="{{title}}" class="btn btn-primary" [disabled]="!registerForm.form.valid">
+
+    </form>
+</div>

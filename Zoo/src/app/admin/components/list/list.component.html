@@ -1,0 +1,56 @@
+<div class="col-lg-12">
+
+    <h3>{{title}}</h3>
+
+    <div class="row">
+        <div class="col-lg-2">Buscar </div>
+        <div class="col-lg-5">  
+            <input type="text" [(ngModel)]="busqueda"  > 
+        </div>
+        <div class="col-lg-12">
+            {{busqueda}}
+        </div>
+    </div>
+    <br>
+    <table class="table table-hover">
+        <thead class="thead-default">
+            <tr>
+                <th>Nombre</th>
+                <th>Año</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let animal of animal | search:busqueda">
+                <td>{{animal.name}}</td>
+                <td>{{animal.year}}</td>
+                <td>2012</td>
+                <td>
+                    <a [routerLink]="['/animal', animal._id]" class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true" >Ver</span></a>
+                    <a [routerLink]="['/admin-panel/editar', animal._id]" class="btn btn-primary"><span class="glyphicon glyphicon-pencil">Editar</span></a>
+                    <a href="#myModal-{{animal._id}}" role="button" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash">Eliminar</span></a>
+                    <!-- Modal HTML -->
+                    <div id="myModal-{{animal._id}}" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                                    <h4 class="modal-title">Desa eliminar?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>{{animal.name}} ¿Desea eliminar?</p>
+                                    <p class="text-warning"><small>No será posible recuperarlo</small></p>
+                                 
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger" (click) ="deleteAnimal(animal._id)">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

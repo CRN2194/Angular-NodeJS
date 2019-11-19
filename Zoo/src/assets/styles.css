@@ -1,0 +1,20 @@
+body{
+    background: #cacdce ;
+}
+.pointer{
+    cursor: pointer;
+}
+.image_for_edit img{
+    width: 60px;
+        
+}
+.avatar{
+    width:  35x;
+    height: 35px;
+    border-radius: 700px;
+    overflow: hidden;
+
+}
+.avatar img{
+    height: 40px;
+}
